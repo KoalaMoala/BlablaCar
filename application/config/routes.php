@@ -53,6 +53,11 @@ $route['default_controller'] = 'welcome';
 
 $route['admin/dashboard'] = 'admin/admin';
 
+//trips routes
+$route['admin/trips'] = 'admin/trips';
+$route['admin/trips/create'] = 'admin/trips/create';
+$route['admin/trips/edit/(:any)'] = 'admin/trips/edit/$1';
+
 //brands routes
 $route['admin/brands'] = 'admin/brands';
 $route['admin/brands/create'] = 'admin/brands/create';
