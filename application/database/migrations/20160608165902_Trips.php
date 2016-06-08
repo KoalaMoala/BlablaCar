@@ -23,21 +23,28 @@ class Migration_Trips extends CI_Migration {
           'car_model' => array(
               'type' => 'VARCHAR',
               'constraint' => 150
+          ),
+          'car_capacity' => array(
+              'type' => 'SMALLINT',
+              'constraint' => 8,
+              'null' => FALSE
           )
           ,
-          'features' => array(
+          'remaining_seats' => array(
+              'type' => 'INT',
+              'constraint' => 11,
+              'null' => FALSE
+          )
+          ,
+          'preferences' => array(
               'type' => 'VARCHAR',
               'constraint' => 350
           )
           ,
           'price' => array(
               'type' => 'INT',
-              'constraint' => 11
-          )
-          ,
-          'price' => array(
-              'type' => 'INT',
-              'constraint' => 11
+              'constraint' => 11,
+              'null' => FALSE
           )
           ,
           'created_from_ip' => array(
@@ -54,6 +61,10 @@ class Migration_Trips extends CI_Migration {
           ),
           'date_updated' => array(
               'type' => 'DATETIME'
+          ),
+          'date_departure' => array(
+              'type' => 'DATETIME',
+              'null' => FALSE
           )
         ));
         $this->dbforge->add_key('id', TRUE);
