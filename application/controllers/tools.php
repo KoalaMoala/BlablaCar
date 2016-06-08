@@ -120,10 +120,10 @@ class $name extends Seeder {
 
     public function run() {
         \$this->db->truncate(\$this->table);
-        
+
         //seed records manually
         \$data = [
-            'user_name' => 'admin',
+            'username' => 'admin@admin.com',
             'password' => '9871'
         ];
         \$this->db->insert(\$this->table, \$data);
@@ -136,7 +136,7 @@ class $name extends Seeder {
             echo \".\";
 
             \$data = array(
-                'user_name' => \$this->faker->unique()->userName,
+                'username' => \$this->faker->unique()->email,
                 'password' => '1234',
             );
 
