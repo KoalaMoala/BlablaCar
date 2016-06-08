@@ -17,6 +17,25 @@ class Migration_Trip_participants extends CI_Migration {
             'trip_id' => array(
                 'type' => 'INT',
                 'constraint' => 11
+            ),
+            'created_from_ip' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 100
+            ),
+            'updated_from_ip' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 100
+            )
+            ,
+            'date_created' => array(
+                'type' => 'DATETIME'
+            ),
+            'date_updated' => array(
+                'type' => 'DATETIME'
+            ),
+            'is_owner' => array(
+                'type' => 'BOOLEAN',
+                'null' => FALSE
             )
         ));
         $this->dbforge->add_key('id', TRUE);
