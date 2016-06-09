@@ -32,10 +32,6 @@ class Migration_Trip_participants extends CI_Migration {
             ),
             'date_updated' => array(
                 'type' => 'DATETIME'
-            ),
-            'is_owner' => array(
-                'type' => 'BOOLEAN',
-                'null' => FALSE
             )
         ));
         $this->dbforge->add_key('id', TRUE);
