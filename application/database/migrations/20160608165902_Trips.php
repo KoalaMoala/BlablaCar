@@ -9,15 +9,17 @@ class Migration_Trips extends CI_Migration {
               'constraint' => 11,
               'auto_increment' => TRUE
           ),
+          'owner_id' => array(
+              'type' => 'INT',
+              'constraint' => 11
+          ),
           'departure' => array(
               'type' => 'VARCHAR',
-              'constraint' => 100,
-              'null' => FALSE
+              'constraint' => 100
           ),
           'destination' => array(
               'type' => 'VARCHAR',
-              'constraint' => 100,
-              'null' => FALSE
+              'constraint' => 100
           )
           ,
           'car_model' => array(
@@ -26,14 +28,12 @@ class Migration_Trips extends CI_Migration {
           ),
           'car_capacity' => array(
               'type' => 'SMALLINT',
-              'constraint' => 8,
-              'null' => FALSE
+              'constraint' => 8
           )
           ,
           'remaining_seats' => array(
               'type' => 'INT',
-              'constraint' => 11,
-              'null' => FALSE
+              'constraint' => 11
           )
           ,
           'preferences' => array(
@@ -43,8 +43,7 @@ class Migration_Trips extends CI_Migration {
           ,
           'price' => array(
               'type' => 'INT',
-              'constraint' => 11,
-              'null' => FALSE
+              'constraint' => 11
           )
           ,
           'created_from_ip' => array(
@@ -63,11 +62,11 @@ class Migration_Trips extends CI_Migration {
               'type' => 'DATETIME'
           ),
           'date_departure' => array(
-              'type' => 'DATETIME',
-              'null' => FALSE
+              'type' => 'DATETIME'
           )
         ));
         $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (owner_id) REFERENCES users(id)');
         $this->dbforge->create_table('trips');
     }
 
