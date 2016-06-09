@@ -21,17 +21,17 @@ class trips extends Admin_Controller {
         $trips = $this->trip->get_all();
 
         $data['trips'] = $trips;
+        $data['user_id'] = $this->ion_auth->get_user_id();
         $data['page'] = $this->config->item('ci_my_admin_template_dir_admin') . "trips_list";
         $this->load->view($this->_container, $data);
     }
 
     public function create() {
-        $now = time();
-        $human = unix_to_human($now, FALSE, 'eu');
-        echo $human;
+
         $inputs = ['departure', 'destination', 'car_capacity', 'price', 'preferences', 'date'];
         if ( not_null($this->input->post(), $inputs)) {
 
+            $data['owner_id'] = $this->ion_auth->get_user_id();
             $data['departure'] = $this->input->post('departure');
             $data['destination'] = $this->input->post('destination');
             $data['car_capacity'] = $this->input->post('car_capacity');
@@ -40,19 +40,11 @@ class trips extends Admin_Controller {
             $data['preferences'] = $this->input->post('preferences');
 
             //format date
-            $data['date_departure'] = human_to_unix(str_replace("/" ,"-", $this->input->post('date')));
+            $timestamp = (new DateTime(str_replace("/" ,"-", $this->input->post('date'))) )->getTimestamp();
+            $data['date_departure'] = date("Y-m-d\TH:i:sO", $timestamp);
             $trip_id = $this->trip->insert($data);
 
-            $data_p = [];
-            $data_p['user_id'] = $this->ion_auth->get_user_id();
-            $data_p['trip_id'] = $trip_id;
-            $data_p['is_owner'] = TRUE;
-            $this->trip_participant->insert($data_p);
-
             redirect('/admin/trips', 'refresh');
-        }
-        else {
-          var_dump($this->input->post(NULL,TRUE));
         }
 
         $data['page'] = $this->config->item('ci_my_admin_template_dir_admin') . "trips_create";

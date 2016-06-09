@@ -28,8 +28,8 @@
                                     <input class="form-control" placeholder="Destination" id="destination" name="destination">
                                 </div>
                                 <div class="form-group">
-                                    <label>Departure's date | DD/MM/YYYY HH:MM</label>
-                                    <input class="form-control" placeholder="DD/MM/YYYY HH:MM" id="date" name="date">
+                                    <label>Departure's date | YYYY/MM/DD HH:MM</label>
+                                    <input class="form-control" placeholder="YYYY/MM/DD HH:MM" id="date" name="date">
                                 </div>
                                 <div class="form-group">
                                     <label>Car capacity</label>

@@ -23,10 +23,10 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Trip ID</th>
-                                    <th>Description</th>
-                                    <th>Created From IP</th>
-                                    <th>Updated From IP</th>
+                                    <th>Departure</th>
+                                    <th>Destination</th>
+                                    <th>Date</th>
+                                    <th>Remaining Seats</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -34,13 +34,15 @@
                                 <?php if (count($trips)): ?>
                                     <?php foreach ($trips as $key => $list): ?>
                                         <tr class="odd gradeX">
-                                            <td><?=$list['id']?></td>
-                                            <td><?=$list['description']?></td>
-                                            <td><?=$list['created_from_ip']?></td>
-                                            <td><?=$list['updated_from_ip']?></td>
+                                            <td><?=$list['departure']?></td>
+                                            <td><?=$list['destination']?></td>
+                                            <td><?=$list['date_departure']?></td>
+                                            <td><?=$list['remaining_seats']?></td>
                                             <td>
+                                              <?php if($list['owner_id'] == $user_id ){ ?>
                                                 <a href="<?= base_url('admin/trips/edit/'.$list['id']) ?>" class="btn btn-info">edit</a>
                                                 <a href="<?= base_url('admin/trips/delete/'.$list['id']) ?>" class="btn btn-danger">delete</a>
+                                              <?php } ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -59,11 +61,11 @@
                             </tbody>
                             <tfooter>
                                 <tr>
-                                    <th>Trip ID</th>
-                                    <th>Description</th>
-                                    <th>Created From IP</th>
-                                    <th>Updated From IP</th>
-                                    <th>Action</th>
+                                  <th>Departure</th>
+                                  <th>Destination</th>
+                                  <th>Date</th>
+                                  <th>Remaining Seats</th>
+                                  <th>Action</th>
                                 </tr>
                             </tfooter>
                         </table>
