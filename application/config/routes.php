@@ -53,6 +53,9 @@ $route['default_controller'] = 'welcome';
 
 $route['admin/dashboard'] = 'admin/admin';
 
+//account routes
+$route['account/create'] = 'auth/create_user';
+
 //trips routes
 $route['admin/trips'] = 'admin/trips';
 $route['admin/trips/create'] = 'admin/trips/create';

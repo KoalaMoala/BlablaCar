@@ -66,6 +66,18 @@ class trips extends Admin_Controller {
         $this->load->view($this->_container, $data);
     }
 
+    public function reservation($id)
+    {
+        $trip = $this->trip->get($id);
+
+        if($trip['remaining_seats'] > 0)
+        {
+          $trip['remaining_seats'] = $trip['remaining_seats'] - 1;
+        }
+
+        //TODO
+    }
+
     public function delete($id) {
         $this->trip->delete($id);
 

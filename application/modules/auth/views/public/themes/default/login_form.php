@@ -29,6 +29,9 @@
                             <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
                         </fieldset>
                     </form>
+                    <div>
+                      <a href="<?= base_url('account/create') ?>">Create account</a>
+                    </div>
                 </div>
             </div>
         </div>

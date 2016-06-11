@@ -40,8 +40,10 @@
                                             <td><?=$list['remaining_seats']?></td>
                                             <td>
                                               <?php if($list['owner_id'] == $user_id ){ ?>
-                                                <a href="<?= base_url('admin/trips/edit/'.$list['id']) ?>" class="btn btn-info">edit</a>
-                                                <a href="<?= base_url('admin/trips/delete/'.$list['id']) ?>" class="btn btn-danger">delete</a>
+                                                <a href="<?= base_url('admin/trips/edit/'.$list['id']) ?>" class="btn btn-info">Edit</a>
+                                                <a href="<?= base_url('admin/trips/delete/'.$list['id']) ?>" class="btn btn-danger">Delete</a>
+                                              <?php }elseif ($list['remaining_seats'] > 0) { ?>
+                                                <a href="<?= base_url('admin/trips/reservation/'.$list['id']) ?>" class="btn btn-success">Join</a>
                                               <?php } ?>
                                             </td>
                                         </tr>
