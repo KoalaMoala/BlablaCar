@@ -12,9 +12,14 @@ class trips extends Admin_Controller {
         }
 
         $this->load->model(array('admin/trip'));
+        $this->load->model(array('admin/trip'));
         $this->load->model(array('admin/trip_participant'));
         $this->load->helper('date');
         $this->load->helper('form_validator');
+        $this->load->library('session');
+
+        $credit = $this->ion_auth->user()->row()->credit;
+        $this->session->set_userdata(["credit" => $credit]);
     }
 
     public function index() {
@@ -40,10 +45,13 @@ class trips extends Admin_Controller {
             $data['preferences'] = $this->input->post('preferences');
 
             //format date
-            $timestamp = (new DateTime(str_replace("/" ,"-", $this->input->post('date'))) )->getTimestamp();
-            $data['date_departure'] = date("Y-m-d\TH:i:sO", $timestamp);
-            $trip_id = $this->trip->insert($data);
+            $datetime = new DateTime(str_replace("/" ,"-", $this->input->post('date')));
+            $data['date_departure'] = date("Y-m-d\TH:i:sO", $datetime->getTimestamp());
 
+            if($datetime > new DateTime() )
+            {
+                $trip_id = $this->trip->insert($data);
+            }
             redirect('/admin/trips', 'refresh');
         }
 
@@ -52,10 +60,25 @@ class trips extends Admin_Controller {
     }
 
     public function edit($id) {
-        if ($this->input->post('description')) {
-            $data['description'] = $this->input->post('description');
-            $this->trip->update($data, $id);
+        $inputs = ['departure', 'destination', 'car_capacity', 'price', 'preferences', 'date'];
+        if ( not_null($this->input->post(), $inputs)) {
 
+            $data['owner_id'] = $this->ion_auth->get_user_id();
+            $data['departure'] = $this->input->post('departure');
+            $data['destination'] = $this->input->post('destination');
+            $data['car_capacity'] = $this->input->post('car_capacity');
+            $data['remaining_seats'] = $this->input->post('car_capacity');
+            $data['price'] = $this->input->post('price');
+            $data['preferences'] = $this->input->post('preferences');
+
+            //format date
+            $datetime = new DateTime(str_replace("/" ,"-", $this->input->post('date')));
+            $data['date_departure'] = date("Y-m-d\TH:i:sO", $datetime->getTimestamp());
+
+            if($datetime > new DateTime() )
+            {
+                $trip_id = $this->trip->update($data, $id);
+            }
             redirect('/admin/trips', 'refresh');
         }
 

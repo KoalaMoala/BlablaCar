@@ -27,6 +27,7 @@
                                     <th>Destination</th>
                                     <th>Date</th>
                                     <th>Remaining Seats</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,6 +39,7 @@
                                             <td><?=$list['destination']?></td>
                                             <td><?=$list['date_departure']?></td>
                                             <td><?=$list['remaining_seats']?></td>
+                                            <td><?=$list['price']?></td>
                                             <td>
                                               <?php if($list['owner_id'] == $user_id ){ ?>
                                                 <a href="<?= base_url('admin/trips/edit/'.$list['id']) ?>" class="btn btn-info">Edit</a>
@@ -67,6 +69,7 @@
                                   <th>Destination</th>
                                   <th>Date</th>
                                   <th>Remaining Seats</th>
+                                  <th>Price</th>
                                   <th>Action</th>
                                 </tr>
                             </tfooter>

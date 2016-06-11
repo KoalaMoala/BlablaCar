@@ -17,20 +17,36 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <form role="form" method="POST" action="<?=base_url('admin/brands/edit/'.$brand->id)?>">
-                                <div class="form-group">
-                                    <label>Brand Id Input</label>
-                                    <input class="form-control" value="<?=$brand->id?>" placeholder="Auto generated" disabled="1">
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input class="form-control" value="<?=$brand->description?>" placeholder="Enter brand description" id="description" name="description">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Submit Button</button>
-                            </form>
-                        </div>
+                      <div class="col-lg-6">
+                          <form role="form" method="POST" action="<?=base_url('admin/trips/edit/') . '/' . $trip->id?>">
+                              <div class="form-group">
+                                  <label>Departure</label>
+                                  <input class="form-control" value="<?= $trip->departure ?>" id="departure" name="departure">
+                              </div>
+                              <div class="form-group">
+                                  <label>Destination</label>
+                                  <input class="form-control" value="<?= $trip->destination ?>" id="destination" name="destination">
+                              </div>
+                              <div class="form-group">
+                                  <label>Departure's date | YYYY/MM/DD HH:MM</label>
+                                  <input class="form-control" value="<?= $trip->date_departure ?>" id="date" name="date">
+                              </div>
+                              <div class="form-group">
+                                  <label>Car capacity</label>
+                                  <input type="number" value="<?= $trip->car_capacity ?>" class="form-control" id="car_capacity" name="car_capacity" min="1">
+                              </div>
+                              <div class="form-group">
+                                  <label>Price</label>
+                                  <input type="number" value="<?= $trip->price ?>" class="form-control" id="price" name="price" min="1">
+                              </div>
+                              <div class="form-group">
+                                  <label>Preferences</label>
+                                  <input class="form-control" value="<?= $trip->preferences ?>" id="preferences" name="preferences">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Submit Button</button>
+                              <button type="reset" class="btn btn-default">Reset Button</button>
+                          </form>
+                      </div>
 
 
                     </div>

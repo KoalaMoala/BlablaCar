@@ -55,6 +55,8 @@
                 <!-- /.navbar-header -->
 
                 <ul class="nav navbar-top-links navbar-right">
+                    <li>Credit: <?= $this->session->all_userdata()['credit']; ?>
+                    </li>
                       <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
