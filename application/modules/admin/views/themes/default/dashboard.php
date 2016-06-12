@@ -7,72 +7,76 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>New Comments!</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-yellow">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
-                            <div>Support Tickets!</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+      <div class="col-lg-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  My Next Trips
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                  <div class="dataTable_wrapper">
+                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                          <thead>
+                              <tr>
+                                  <th>Departure</th>
+                                  <th>Destination</th>
+                                  <th>Date</th>
+                                  <th>Remaining Seats</th>
+                                  <th>Price</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php if (count($trips)): ?>
+                                  <?php foreach ($trips as $key => $list): ?>
+                                      <tr class="odd gradeX">
+                                          <td><?=$list['departure']?></td>
+                                          <td><?=$list['destination']?></td>
+                                          <td><?=$list['date_departure']?></td>
+                                          <td><?=$list['remaining_seats']?></td>
+                                          <td><?=$list['price']?></td>
+                                          <td>
+                                            <?php if($list['owner_id'] == $user_id ){ ?>
+                                              <a href="<?= base_url('admin/trips/edit/'.$list['id']) ?>" class="btn btn-info">Edit</a>
+                                              <a href="<?= base_url('admin/trips/delete/'.$list['id']) ?>" class="btn btn-danger">Delete</a>
+                                            <?php }else { ?>
+                                              <a href="<?= base_url('admin/trips/reservation/'.$list['id']) ?>" class="btn btn-success">Change reservation</a>
+                                            <?php } ?>
+                                          </td>
+                                      </tr>
+                                  <?php endforeach; ?>
+                              <?php else: ?>
+                                  <tr class="even gradeC">
+                                      <td>No data</td>
+                                      <td>No data</td>
+                                      <td>No data</td>
+                                      <td>No data</td>
+                                      <td>
+                                          <a href="#" class="btn btn-info">edit</a>
+                                          <a href="#" class="btn btn-danger">delete</a>
+                                      </td>
+                                  </tr>
+                              <?php endif; ?>
+                          </tbody>
+                          <tfooter>
+                              <tr>
+                                <th>Departure</th>
+                                <th>Destination</th>
+                                <th>Date</th>
+                                <th>Remaining Seats</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                              </tr>
+                          </tfooter>
+                      </table>
+                  </div>
+              </div>
+              <!-- /.panel-body -->
+          </div>
+          <!-- /.panel -->
+      </div>
+      <!-- /.col-lg-12 -->
+
     </div>
 
 </div>
