@@ -79,9 +79,9 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                                <form role="form" method="POST" action="<?=base_url('admin/trips/')?>" class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Departure">
-                                    <input type="text" class="form-control" placeholder="Destination">
+                                <form role="form" method="POST" action="<?=base_url('admin/trips/search')?>" class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Departure" id="departure" name="departure">
+                                    <input type="text" class="form-control" placeholder="Destination" id="destination" name="destination">
                                     <button class="btn btn-default" type="submit" style="width:100%">
                                         <i class="fa fa-search"></i>
                                     </button>

@@ -30,6 +30,26 @@ class trips extends Admin_Controller {
         $this->load->view($this->_container, $data);
     }
 
+    public function search()
+    {
+      $where = [];
+
+      //departure
+      if($this->input->post('departure') != null)
+        $where['departure'] = $this->input->post('departure');
+
+      //destination
+      if($this->input->post('destination') != null)
+        $where['destination'] = $this->input->post('destination');
+
+      $trips = $this->trip->get_all('', $where);
+
+      $data['trips'] = $trips;
+      $data['user_id'] = $this->ion_auth->get_user_id();
+      $data['page'] = $this->config->item('ci_my_admin_template_dir_admin') . "trips_list";
+      $this->load->view($this->_container, $data);
+    }
+
     public function create() {
 
         $inputs = ['departure', 'destination', 'car_capacity', 'price', 'preferences', 'date'];
@@ -99,7 +119,7 @@ class trips extends Admin_Controller {
 
           $data['user_id'] = $this->ion_auth->get_user_id();
           $data['trip_id'] = $id;
-          $data['seats'] = $seats;        
+          $data['seats'] = $seats;
 
           //make reservation
           if( $reservation == null )
