@@ -36,6 +36,8 @@ class Auth extends MY_Controller {
 
             if ($this->ion_auth->login($this->input->post('email'), $this->input->post('password'), $remember)) {
                 $this->session->set_flashdata('message', $this->ion_auth->messages());
+                $credit = $this->ion_auth->user()->row()->credit;
+                $this->session->set_userdata(["credit" => $credit]);
                 redirect('/admin/dashboard', 'refresh');
             } else {
                 $this->session->set_flashdata('message', $this->ion_auth->errors());

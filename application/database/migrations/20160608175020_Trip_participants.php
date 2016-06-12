@@ -18,6 +18,11 @@ class Migration_Trip_participants extends CI_Migration {
                 'type' => 'INT',
                 'constraint' => 11
             ),
+            'seats' => array(
+                'type' => 'INT',
+                'unsigned' => TRUE,
+                'constraint' => 8
+            ),
             'created_from_ip' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 100
