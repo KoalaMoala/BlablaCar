@@ -5,4 +5,5 @@ Bootstrap Template : http://startbootstrap.com/template-overviews/sb-admin-2/
 
 # Get started
 1 - activate Apache's rewrite module  
-2 - php index.php tools migrate (database setup)  
+2 - composer install
+3 - php index.php tools migrate (database setup)  
