@@ -10,8 +10,9 @@ class Migration_Trips extends CI_Migration {
               'auto_increment' => TRUE
           ),
           'owner_id' => array(
-              'type' => 'INT',
-              'constraint' => 11
+              'type' => 'MEDIUMINT',
+              'constraint' => 8,
+              'unsigned' => TRUE
           ),
           'departure' => array(
               'type' => 'VARCHAR',
